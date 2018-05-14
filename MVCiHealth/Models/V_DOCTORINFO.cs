@@ -16,13 +16,14 @@ namespace MVCiHealth.Models
     {
         public int DOCTOR_ID { get; set; }
         public string DOCTOR_NM { get; set; }
-        public string GENDER { get; set; }
+        public Nullable<int> GENDER { get; set; }
         public Nullable<int> AGE { get; set; }
         public string TEL { get; set; }
         public string PHOTO_URL { get; set; }
         public Nullable<int> SECTION_ID { get; set; }
         public Nullable<int> DISEASE_ID { get; set; }
         public string INTRODUCTION { get; set; }
+        public Nullable<double> LEVEL { get; set; }
         public Nullable<System.DateTime> INSDATE { get; set; }
         public int PATIENT_ID { get; set; }
         public string PATIENT_NM { get; set; }

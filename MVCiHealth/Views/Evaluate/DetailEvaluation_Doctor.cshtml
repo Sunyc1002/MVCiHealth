@@ -1,0 +1,53 @@
+﻿@using MVCiHealth.Models
+@model IEnumerable<V_EVALUATION>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+<div class="row">
+    <div class="col-md-4">
+        <img src="~/Resources/Images/Evaluate/doctor.png" alt="显示当前医生的照片" class="img-rounded">
+        <input id="score" value="@(Model.First().LEVEL)" type="number" class="rating" readonly="readonly" data-size="xs">
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    医生评价详情页
+                </h3>
+            </div>
+            <div class="panel-body">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label for="doctorName" class="col-xs-2 col-sm-2 control-label">医生姓名</label>
+                        <text id="doctorName" class="col-xs-3 control-label">@(ViewData.Model.First().DOCTOR_NM)</text>
+                    </div>
+                    @foreach (var item in Model)
+                    {
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <text class="text-left">@(item.PATIENT_NM)</text>
+                                <text class="col-xs-offset-9">
+                                    <span class="glyphicon glyphicon-thumbs-up" aria-label="Left Align"></span>
+                                    (@item.AGREETIMES)
+                                </text>
+                            </div>
+                            <div class="form-group">
+                                <label for="detail" class="col-xs-2 col-sm-2 control-label">评价详情</label>
+                                <div class="panel-body col-xs-5 col-sm-5">
+                                    <textarea name="DETAIL" class="form-control" rows="3" readonly="readonly">
+                                        @Html.DisplayFor(modelitem => item.DETAIL)
+                                    </textarea>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </form>
+                <div class="btn-group center-block">
+                    <center><button type="button" class="btn btn-default" id="returnBt" onclick="location.href='/Doctor/Index'">返回</button></center>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
